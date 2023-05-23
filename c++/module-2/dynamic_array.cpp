@@ -19,7 +19,13 @@ int main()
     {
         cout<<b[i]<<" ";
     }
+    //delete a array
+    delete[] a;
+    for (int i = 0; i < 5; i++)
+    {
+        cout<<a[i]<<" "<<endl;
+    }
     
-    
+        
     return 0;
 }
