@@ -1,0 +1,3 @@
+abdur rahman 1 100
+abdur razzak 2 98
+abdur rahim 12 80
