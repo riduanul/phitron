@@ -95,33 +95,48 @@ void delete_node(Node *head, int pos)
     temp->next->prev = temp;
     delete delete_node;
 }
-void delete_tail(Node *&tail)
+void delete_tail(Node *&tail, Node *&head)
 {
     Node *deleteNode = tail;
     tail = tail->prev;
     delete deleteNode;
+    if (tail == NULL)
+    {
+        head == NULL;
+        return;
+    }
     tail->next = NULL;
 }
-void delete_head(Node *&head)
+void delete_head(Node *&head, Node *&tail)
 {
+
     Node *deleteNode = head;
+
     head = head->next;
+    delete deleteNode;
+    if (head == NULL)
+    {
+        tail = NULL;
+        return;
+    }
     head->prev = NULL;
 }
 int main()
 {
     Node *head = new Node(10);
-    Node *a = new Node(20);
-    Node *b = new Node(30);
-    Node *c = new Node(40);
-    Node *tail = c;
+    Node *tail = NULL;
+    head->next = tail;
+    // Node *a = new Node(20);
+    // Node *b = new Node(30);
+    // Node *c = new Node(40);
+    // Node *tail = c;
 
-    head->next = a;
-    a->prev = head;
-    a->next = b;
-    b->prev = a;
-    b->next = c;
-    c->prev = b;
+    // head->next = a;
+    // a->prev = head;
+    // a->next = b;
+    // b->prev = a;
+    // b->next = c;
+    // c->prev = b;
     int pos;
     cin >> pos;
 
@@ -148,12 +163,12 @@ int main()
     }
     else if (pos == 0)
     {
-        delete_head(head);
+        delete_head(head, tail);
     }
     else if (pos == get_length(head) - 1)
     {
 
-        delete_tail(tail);
+        delete_tail(tail, head);
     }
     else
     {
