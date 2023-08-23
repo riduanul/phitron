@@ -1,0 +1,5 @@
+dist of 1: 0
+dist of 2: 3
+dist of 3: 2
+dist of 4: 4
+dist of 5: 5

@@ -1,0 +1,1 @@
+{"name":"Local: H_Sorting","url":"c:\\Programming\\phitron\\c++\\module2.5_practice\\H_Sorting.cpp","tests":[{"id":1684819256189,"input":"3\n3 1 2","output":"1 2 3"},{"id":1684819282465,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Programming\\phitron\\c++\\module2.5_practice\\H_Sorting.cpp","group":"local","local":true}
