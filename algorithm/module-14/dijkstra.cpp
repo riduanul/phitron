@@ -11,7 +11,7 @@ void dijkstra(int s)
     queue<int> q;
     q.push(s);
     dist[s] = 0;
- 
+
     while (!q.empty())
     {
         int parent = q.front();
