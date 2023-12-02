@@ -1,0 +1,5 @@
+create = table তৈরি করা
+Insert = table existing data entry
+Update = table existing data change
+delete = table data delete
+drop = delete table

@@ -1,0 +1,46 @@
+sql = structured query language
+      as python, java, c++
+
+Mysql = database
+        Relational database
+        SQL query can use
+
+
+type of data we can use in Mysql
+
+Numeric Type:
+
+Integer = INT -> 0, 3, 5, 100
+Float = FLOAT, DOUBLE,NUMERIC, DECIMAL -> 1.00 etc
+
+String Type:
+
+CHAR = CHAR(4): 'abcd' you can use only 4 character not more or less
+VARCHAR = VARCHAR(5): you can start 1 to 5 'a' 'ab' 'abc' 'abcd' 'abcde'
+
+Date time Type:
+
+DATE = 9 JAN 2023, 09-01-2023, 2023 AS YOU WANT
+TIME = HH:MM:SS, 12:30:02, 
+DATETIME = 
+
+Boolean Type:
+
+BOOL = TRUE / FALSE
+BOOLEAN =
+
+Binary Type:
+
+Binary(10000000)
+
+Set Type: 
+
+SET(--,--,--)1234, 12345 = 12345
+SET('A', 'B', "C")
+
+Bit  TYPE:
+BIT(5) = 01000
+
+there was many data types like BLOB, TEXT etc will learn by using those 
+
+
