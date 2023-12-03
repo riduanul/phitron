@@ -1,0 +1,23 @@
+......
+Restaurant app
+
+1. User: base class(ABC)
+2. Customer(User)
+3. Employee(User)
+4. Chef(Employee)
+5. Manager(Employee)
+6. Cleaner(Employee)
+7. Supplier(User)
+8. Marketer(User)
+
+1. Food Item(ABC)
+2. Pizza(Food Item)
+3. Burger(Food Item)
+4. drinks(Food Item)
+5. Juice(Food Item)
+6. Salad(Food Item)
+
+
+1. Order
+2. Restaurant
+......
