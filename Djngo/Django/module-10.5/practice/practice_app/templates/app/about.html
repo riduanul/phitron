@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'practice_app/styles.css' %}"> {% endcomment %}
+    <title>About page</title>
+</head>
+<body>
+    <h1>About page app</h1>
+    <h1><a href="http://127.0.0.1:8000/">Home</a></h1>
+    <h1><a href="/app/about">about</a></h1>
+    <h1><a href="/app/contact">contact</a></h1>
+
+
+   <h2>About Me:</h2>
+
+   <h3>Name: {{name}}</h3>
+   <h3>age: {{age}}</h3>
+
+   {% comment %} 1. join filter {% endcomment %}
+   <h2>Siblings:</h2>
+   <p>{{ siblings|join:", " }}</p>
+</ul>
+
+{% comment %} 2. cap first filter {% endcomment %}
+
+<h3>{{name | capfirst}}</h3>
+
+{% comment %} 3. Date {% endcomment %}
+
+<h4> Birth Day: {{ birthDay | date:"D d M Y" }}</h4>
+
+{% comment %} 4. default value {% endcomment %}
+
+<h5>{{ mobile | default:"nothing" }}</h5>
+{% comment %} add filter {% endcomment %}
+
+<h4>age:{{ age | add:"5" }}.</h4>
+{% comment %} 5. cut filter {% endcomment %}
+<h4>Father Name: {{ FatherName | cut:" "}}</h4>
+
+{% comment %} 6. Dictsort filter {% endcomment %}
+<h4>{{ siblings | dictsort:"name"}}</h4>
+{% comment %} 7. first filter {% endcomment %}
+<p>{{ favoriteFruits | first }}</p>
+{% comment %} 8. last filter {% endcomment %}
+<p>{{ favoriteFruits | last }}</p>
+{% comment %} 9. legth filter {% endcomment %}
+<p>{{ favoriteFruits | length }}</p>
+{% comment %} 10. lower filter {% endcomment %}
+<h5>{{ FatherName | lower }}</h5>
+{% comment %} 11. upper filter {% endcomment %}
+<h5>{{ FatherName | upper }}</h5>
+{% comment %} 12. upper filter {% endcomment %}
+<h5>{{ Framework | title }}</h5>
+{% comment %} 13. random filter {% endcomment %}
+<p>{{ favoriteFruits | random }}</p>
+{% comment %} 14. slice filter {% endcomment %}
+<p>{{ favoriteFruits | slice:':2' }}</p>
+{% comment %} 15. truncatechars filter {% endcomment %}
+<p>{{ FatherName | truncatechars:8 }}</p>
+{% comment %} 16. wordcount filter {% endcomment %}
+<p>{{ FatherName | wordcount }}</p>
+{% comment %} 17. truncatewords filter {% endcomment %}
+<p>{{ FatherName | truncatewords:1 }}</p>
+{% comment %} 18. Make_list filter {% endcomment %}
+<p>{{ mobile | make_list }}</p>
+
+</body>
+</html>
