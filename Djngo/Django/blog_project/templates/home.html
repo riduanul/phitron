@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block component %}
+<div class="row d-flex flex-wrap justify-content-center px-5 container" style="width:80%; margin:auto;">
+    <h1 class='text-success text-center p-3'>Posts</h1>
+    {% for p in post %}
+    <div class="col-sm-3 mb-3 mb-sm-0">
+     <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{p.title | truncatewords:5}}</h5>          
+          <p class="card-text">{{p.content | truncatewords:25 }}</p>
+          <p>Author: {{p.author.name}}</p>
+          <p>
+            Category: {% for cat in p.category.all %}
+            <button class='btn btn-warning m-2 btn-sm' disabled>{{cat | join:',' }}</button>
+            {% endfor %}
+          </p>
+          <a href="{% url 'edit_post' p.id %}" class="btn btn-success btn-sm">Edit</a>
+          <a href="{% url 'delete_post' p.id %}" class="btn btn-danger btn-sm">Delete</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+   
+    </div> 
+  
+{% endblock component %}
