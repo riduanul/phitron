@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<h1 class='text-danger text-center p-5'>Model Form </h1>
+
+<div class="mx-auto " style='width:50%; margin:auto;'>
+    <form method='POST' action="/first_app/user/" enctype='multipart/form-data'>
+
+        {% csrf_token %}
+        
+        {{ form | crispy }}
+        <button type='submit' class='btn btn-danger'>Submit</button>
+    
+    </form>
+</div>
+{% endblock %}
