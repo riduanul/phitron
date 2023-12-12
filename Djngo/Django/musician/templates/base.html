@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} bootstrap cdn {% endcomment %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary container">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Musician</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_musicians' %}"> Add Musicians</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_albums' %}"> Add Albums</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+
+    {% block components %}
+        <div class="container">
+            <h1 class='text-danger text-center p-2'>Musicians Directory</h1>
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Musician Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Album Rating</th>
+                  <th scope="col">Instrument Type</th>
+                  <th scope="col">Album Name</th>
+                  <th scope="col">Release Date</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+               {% for d in data%}
+                  <tr>
+                    <th scope="row">{{d.id}}</th>
+                    <td><a href="{% url 'edit_musicians' d.musician.id %}">{{d.musician.first_name}} {{d.musician.last_name}}</a></td>
+                    <td> {{d.musician.email}} </td>
+                    <td>{{d.rating}}</td>
+                    <td>{{d.musician.instrument_type}}</td>
+                    <td>{{d.album_name}}</td>
+                    <td>{{d.release_date}}</td>
+                    <td><div class='d-flex justify-content-center align-items-center gap-2'><a class="btn btn-warning btn-sm" href="{% url 'edit_album' d.id %}">Edit</a> <a class="btn btn-danger btn-sm"  href="{% url 'delete_album' d.id %}">Delete</a></div></td>
+
+                  </tr>
+               {% endfor %}
+             
+              </tbody>
+            </table>
+          </div>
+    {% endblock components %}
+    
+    
+    {% comment %} bootstrap cdn {% endcomment %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>
