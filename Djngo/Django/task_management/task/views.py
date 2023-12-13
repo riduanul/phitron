@@ -11,6 +11,7 @@ def add_task(request):
         print(task_form.changed_data)
         if task_form.is_valid():
             task_form.save()
+            print(task_form.cleaned_data)
             return redirect('home')
     
     else:

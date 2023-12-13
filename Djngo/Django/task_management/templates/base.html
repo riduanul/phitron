@@ -34,7 +34,7 @@
    </header> 
 
    {% block component %}
-    <div class="container w-100 mx-auto">
+    <div class="container w-auto mx-auto">
         <h1 class='text-success text-center fw-bolder p-3'>Task Manager</h1>
         <div class="row justify-content-center align-items-center">
             {% for task in tasks %}
@@ -49,8 +49,13 @@
                         </div>
                         <h4 class='card-title'>{{task.taskName}}</h4>
                         <p class='card-text'>{{task.taskDescription}}</p>
+                        <p>
+                          Category: {% for cat in task.category.all %}
+                          <small class='bg-warning p-1 rounded' disabled>{{cat | join:',' }}</small>
+                          {% endfor %}
+                        </p>
                         {% if task.isCompleted %}
-                            <div>
+                            <div class='pt-2'>
                                 <h6 class='text-white bg-success p-1 text-center '>Completed</h6>
                             </div> 
                         {% else %}
