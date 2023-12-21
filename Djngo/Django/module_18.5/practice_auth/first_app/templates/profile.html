@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block component %}
+{% load crispy_forms_tags %}
+    <div class="profile">
+        
+        <h1 class='text-center text-success fw-bold p-3'>Welcome Mr. {{user}}</h1>
+       <div class='w-50 mx-auto text-center'>
+         <a href="{% url 'change_password' %} " class='btn btn-warning'>Change Your Password</a> <br> <br>
+         <a href="{% url 'change_password_2' %} " class='btn btn-warning'>Change Your Password without Old Password</a> <br> <br>
+         <a href="{% url 'update_profile' %} " class='btn btn-warning'>Update Profile</a>
+        </div>
+
+    
+    </div>
+{% endblock component %}
