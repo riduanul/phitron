@@ -54,7 +54,7 @@
             {% comment %} banner section {% endcomment %}
             <div class="row d-flex justify-content-center align-items-center p-5" style='height:100vh'>
                 <div class="col-md-6 col-sm-12">
-                    <h1 class='text-white text-center fw-bold'><span class='text-success'>Cars</span> Ground</h1>
+                    <h1 class='text-white text-center fw-bold'><span class='text-success'>Car</span> Ground</h1>
                     <p class='text-secondary'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, doloribus vero voluptatum eum neque qui esse ex mollitia rerum quaerat! excepturi a earum odit sit nulla, aut asperiores velit quasi, ratione, illum eos at cumque distinctio quae voluptas nostrum pariatur vero laboriosam reiciendis totam? Veniam nesciunt hic, odit totam nostrum deleniti. Veniam saepe totam quia nostrum quisquam ex facilis!</p>
                     <button class="btn btn-outline-success">View</button>
                 </div>
@@ -75,6 +75,9 @@
                     {% else %}
                         <h2 class='text-center text-white p-3'>Out of stock</h2>
                     {% endif %}
+                </div>
+                <div >
+                 <p class='text-center text-white btn btn-outline-success'> Total Car Found : {{cars | length}}</p>
                 </div>
                     {% for car in cars %}
                     <div class="col-md-4 col-sm-12 g-4 ">
