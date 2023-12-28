@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} bootstrap cdn {% endcomment %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Car Ground | Django App</title>
+</head>
+<body style='background-color:#0D1425'>
+   
+    <header class="text-white position-fixed w-100"style='background-color:#0C1221'>
+        <nav class="navbar navbar-expand-lg  text-white border-bottom px-3 ">
+            <div class="container-fluid">
+              <a class="navbar-brand  fw-bolder text-white" href="{% url 'home' %}"><span class='text-success'>Car</span> Ground</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="text-white navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                  <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="{% url 'home' %}">Home</a>
+                  </li>
+                
+                </ul>
+                <div class=" text-white" >
+                    <ul class="d-flex gap-2 navbar-nav me-auto my-2 my-lg-0">
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item ">
+                          <a class="nav-link  btn btn-outline-warning text-white" aria-current="page" href="{% url 'profile' %}">Profile</a>
+                        </li>
+                        <li class="nav-item ">
+                          <a class="nav-link  btn btn-outline-success text-white" aria-current="page" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                        {%else%}
+                        <li class="nav-item">
+                          <a class="nav-link  btn btn-outline-success text-white" aria-current="page" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link btn btn-outline-warning text-white" aria-current="page" href="{% url 'signup' %}">Signup</a>
+                        </li>
+                        {%endif%}
+                      
+                      </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
+    
+
+        {% block content %}
+            {% comment %} banner section {% endcomment %}
+            <div class="row d-flex justify-content-center align-items-center p-5" style='height:100vh'>
+                <div class="col-md-6 col-sm-12">
+                    <h1 class='text-white text-center fw-bold'><span class='text-success'>Cars</span> Ground</h1>
+                    <p class='text-secondary'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, doloribus vero voluptatum eum neque qui esse ex mollitia rerum quaerat! excepturi a earum odit sit nulla, aut asperiores velit quasi, ratione, illum eos at cumque distinctio quae voluptas nostrum pariatur vero laboriosam reiciendis totam? Veniam nesciunt hic, odit totam nostrum deleniti. Veniam saepe totam quia nostrum quisquam ex facilis!</p>
+                    <button class="btn btn-outline-success">View</button>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <img class='img-fluid' src="{% static 'banner.png' %}" alt="">
+                </div>
+            </div>
+        
+            {% comment %} gallary section {% endcomment %}
+            <section class="car-container p-3">
+                <h1 class='text-center fw-bold text-white p-3'>Car <span class='text-success'>Gallary</span></h1>
+                <div class="w-75 mx-auto d-flex row justify-content-center">
+                  <div class="brands text-center p-3">
+                    {% if brands %}
+                        {% for brand in brands %}
+                            <a href="{% url 'filter' brand.slug %}" class='btn btn-success text-white'>{{brand.brand_name}}</a>
+                        {% endfor %}
+                    {% else %}
+                        <h2 class='text-center text-white p-3'>Out of stock</h2>
+                    {% endif %}
+                </div>
+                    {% for car in cars %}
+                    <div class="col-md-4 col-sm-12 g-4 ">
+                        <div class="card bg-secondary">
+                            <div class="card-body ">
+                                <img
+                                    src="{{car.image.url}}"
+                                    class="img-fluid rounded-top card-img"
+                                    alt="{{car.car_name}}"
+                                    style='height:180px;'
+                                />
+                                <h4 class="card-text ">{{car.car_name}}</h4>
+                                <h5 class="card-text ">Price: ${{car.price}}</h5>
+                                <a class='text-decoration-none text-dark' href="{% url 'details' car.id %}">Details</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                     {% endfor %}
+
+                </div>
+            </section>            
+        {% endblock content %}
+    
+
+
+    {% comment %} bootstrap cdn {% endcomment %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+{%load crispy_forms_tags%}
+
+{% if messages %}
+
+    {% for message in messages %}
+      <p {% if message.tags %} class="{{ message.tags }} text-white"{% endif %}>{{ message }}</p>
+    {% endfor %}
+ 
+{% endif %}
+
+    <div class=" row d-flex flex-wrap pt-5 justify-content-center align-items-center  mx-5">
+        
+        <div class="col-md-6 col-sm-12 pt-5  ">
+            <img class='img-fluid' src="{{car.image.url}}" alt="">
+        </div>
+        
+        <div class="col-md-6 col-sm-12 pt-5 text-white">
+            <h2>Brand Name: {{car.brand.brand_name}}</h2>
+            <h3>Model Name: {{car.car_name}}</h3>
+            <br>
+            <p>Description: {{car.description}}</p>
+            <h3>Price: ${{car.price}}</h3>
+            <h5>Quantity: {{car.quantity}}</h5>
+            <br>
+            {% if request.user.is_authenticated%}
+                <form method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-success" type='submit' name='buy_btn_submit'>Buy Now</button>
+                </form>
+            {% endif %}
+        </div>
+
+       
+    </div>
+    <div class="ms-5 p-2 text-white mt-5">
+        <div class="div">
+            <h3>Comments: {{comments | length }}</h3>
+            {% for comment in comments %}
+                <div class='d-flex gap-3'>
+                    <h5>{{comment.name}}</h5>
+                <p class='text-secondary'>{{comment.date}}</p>
+                </div>
+                <p>{{comment.comment}}</p>
+            {%endfor%}
+           </div>
+    
+           <div class="w-50">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{comment_form | crispy }}
+                <button class="btn btn-success btn-sm" type='submit' name='comment_btn_submit'>Submit</button>
+            </form>
+           </div>
+    </div>
+{% endblock content %}
